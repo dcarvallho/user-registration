@@ -9,6 +9,10 @@ const AddUser = props => {
         event.preventDefault();
     };
 
+    const handleAddUser = () => {
+        window.alert("You cliked on the button")
+    }
+
     return(
         <div>
             <Card className={styles.input}>
@@ -17,7 +21,7 @@ const AddUser = props => {
                     <input type="text" id="username" />
                     <label htmlFor="username">Age (Years)</label>
                     <input type="number" id="username" />
-                    <Button />
+                    <Button addNewUser={handleAddUser} type={''}>Add User</Button>
                 </form>
             </Card>
         </div>
