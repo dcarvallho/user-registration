@@ -1,5 +1,5 @@
-import './index.css';
 import AddUser from './components/users/AddUser'
+import './index.css';
 
 const App = () => {
   return (
