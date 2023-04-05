@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Card from '../generic/Card'
-import Button from '../generic/Button'
+import React, { useState } from 'react';
+import Card from '../generic/Card';
+import Button from '../generic/Button';
 
-import styles from './AddUser.module.css'
+import styles from './AddUser.module.css';
 
 const AddUser = props => {
     const [enteredUsername, setEnteredUsername] = useState('');
@@ -10,31 +10,44 @@ const AddUser = props => {
 
     const addUserHandler = (event) => {
         event.preventDefault();
+        if(enteredUsername.trim().length === 0 || enteredAge.trim().length === 0){
+            return;
+        }
+        if(+enteredAge < 1){
+            return
+        }
+        console.log(enteredUsername, enteredAge)
+        setEnteredAge('');
+        setEnteredUsername('');
     };
-
-    const handleAddUser = () => {
-        window.alert("You cliked on the button")
-    }
 
     const usernameChangeHandler = (event) => {
         setEnteredUsername(event.target.value);
-        console.log(enteredUsername, "name")
-    }
+    };
 
     const ageChangeHandler = (event) => {
         setEnteredAge(event.target.value);
-        console.log(enteredAge, "age")
-    }
+    };
 
     return(
         <div>
             <Card className={styles.input}>
                 <form onSubmit={addUserHandler}>
                     <label htmlFor="username">Username</label>
-                    <input type="text" id="username" onChange={usernameChangeHandler}/>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        value={enteredUsername} 
+                        onChange={usernameChangeHandler}
+                        />
                     <label htmlFor="username">Age (Years)</label>
-                    <input type="number" id="age" onChange={ageChangeHandler}/>
-                    <Button addNewUser={handleAddUser} type={''}>Add User</Button>
+                    <input 
+                        type="number" 
+                        id="age" 
+                        value={enteredAge} 
+                        onChange={ageChangeHandler}
+                        />
+                    <Button type={''}>Add User</Button>
                 </form>
             </Card>
         </div>
