@@ -3,6 +3,7 @@ import Card from '../generic/Card';
 import Button from '../generic/Button';
 
 import styles from './AddUser.module.css';
+import ErrorModal from '../generic/ErrorModal';
 
 const AddUser = (props) => {
     const [enteredUsername, setEnteredUsername] = useState('');
@@ -31,6 +32,7 @@ const AddUser = (props) => {
 
     return(
         <div>
+            <ErrorModal title="An error occured!" message="Something went wrong!"/>
             <Card className={styles.input}>
                 <form onSubmit={addUserHandler}>
                     <label htmlFor="username">Username</label>
