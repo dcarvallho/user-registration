@@ -4,7 +4,7 @@ import Button from '../generic/Button';
 
 import styles from './AddUser.module.css';
 
-const AddUser = props => {
+const AddUser = (props) => {
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
 
@@ -16,7 +16,7 @@ const AddUser = props => {
         if(+enteredAge < 1){
             return
         }
-        console.log(enteredUsername, enteredAge)
+        props.onAddUser(enteredUsername, enteredAge);
         setEnteredAge('');
         setEnteredUsername('');
     };
@@ -40,14 +40,14 @@ const AddUser = props => {
                         value={enteredUsername} 
                         onChange={usernameChangeHandler}
                         />
-                    <label htmlFor="username">Age (Years)</label>
+                    <label htmlFor="age">Age (Years)</label>
                     <input 
                         type="number" 
                         id="age" 
                         value={enteredAge} 
                         onChange={ageChangeHandler}
                         />
-                    <Button type={''}>Add User</Button>
+                    <Button type="">Add User</Button>
                 </form>
             </Card>
         </div>
